@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/andy0130tw/lm-whitelist/issues"
   },
-  "homepage": "https://github.com/andy0130tw/lm-whitelist"
+  "homepage": "https://github.com/andy0130tw/lm-whitelist",
+  "dependencies": {
+    "request": "^2.54.0"
+  }
 }
