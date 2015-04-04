@@ -1,8 +1,11 @@
 var request = require('request');
-var url = require('./_secret/lmurl.js');
 var marketData = null;
 var marketLastFetch = 0;
 var marketCacheTime = 12 * 36e5;    // 12 hr in ms
+
+try {
+	var url = require('./_secret/lmurl.js');
+} catch (e) {}
 
 function getNow() {
 	return new Date() - 0;
@@ -11,10 +14,14 @@ function getNow() {
 function fetchMarket() {
 	if (marketData.progress == 'fetching')
 		return;
+	if (!url) {
+		marketData.progress = 'not_ready';
+		return;
+	}
 	console.log('Market data fetching. Cache time = ' + marketCacheTime);
 	//mark current progress
 	marketData.progress = 'fetching';
-	return request.get(url.LM_MARKET, function(err, resp, body) {
+	return request.get(url.LM_MARKET || '', function(err, resp, body) {
 		if (!err && resp.statusCode == 200) {
 			try {
 				var obj = JSON.parse(body);
@@ -45,7 +52,7 @@ module.exports = {
 		return fetchMarket();
 	},
 	fetch: function() {
-		if(getNow() - marketLastFetch > marketCacheTime) {
+		if(url && getNow() - marketLastFetch > marketCacheTime) {
 			console.info('Market data expired.');
 			fetchMarket();
 		}

@@ -17,10 +17,16 @@ function init() {
 }
 
 try {
-	market.init().on('response', function(){
-		console.log('Market initialization queued.');
+	var req = market.init();
+	if (req) {
+		req.on('response', function(){
+			console.log('Market data fetching queued.');
+			init();
+		});
+	} else {
+		console.info('Market initialization skipped.');
 		init();
-	});
+	}
 } catch (e) {
 	console.warn('Market initialization failed!');
 	init();
