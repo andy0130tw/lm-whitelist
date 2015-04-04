@@ -1,0 +1,5 @@
+
+/* remove left space of navbar brand */
+.brand {
+	padding-left: 0;
+}
