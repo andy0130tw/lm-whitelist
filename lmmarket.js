@@ -3,8 +3,9 @@ var marketData = null;
 var marketLastFetch = 0;
 var marketCacheTime = 12 * 36e5;    // 12 hr in ms
 
+var url = {};
 try {
-	var url = require('./_secret/lmurl.js');
+	url = require('./_secret/lmurl.js');
 } catch (e) {}
 
 function getNow() {
@@ -14,7 +15,7 @@ function getNow() {
 function fetchMarket() {
 	if (marketData.progress == 'fetching')
 		return;
-	if (!url) {
+	if (!url.LM_MARKET) {
 		marketData.progress = 'not_ready';
 		return;
 	}
