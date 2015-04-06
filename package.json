@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/andy0130tw/lm-whitelist",
   "dependencies": {
-    "request": "^2.54.0"
+    "request": "^2.54.0",
+    "express": "^4.12.3"
   }
 }
