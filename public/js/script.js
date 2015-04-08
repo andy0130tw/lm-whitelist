@@ -11,8 +11,8 @@ var lmwl = angular.module('lmwl', []);
 
 lmwl.service('constants', [function(){
 	return {
-		VERSION: '0.0.1',
-		LAST_MODIFIED: '2014/4/5',
+		VERSION: '0.0.2-snapshot',
+		LAST_MODIFIED: '2014/4/8',
 		MARKET_SOURCE: '/whitelist'
 	}
 }]);

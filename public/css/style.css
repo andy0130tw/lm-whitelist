@@ -1,4 +1,9 @@
 
+/* no vertical scroll */
+html, body {
+	overflow-x: hidden;
+}
+
 /* remove left space of navbar brand */
 .brand {
 	padding-left: 0;
